@@ -1,0 +1,35 @@
+# Unity generated folders
+Game_2/[Ll]ibrary/
+Game_2/[Tt]emp/
+Game_2/[Oo]bj/
+Game_2/[Bb]uild/
+Game_2/[Bb]uilds/
+Game_2/[Ll]ogs/
+Game_2/[Uu]ser[Ss]ettings/
+
+# IDE and generated project files
+Game_2/.vs/
+Game_2/.idea/
+Game_2/*.csproj
+Game_2/*.sln
+Game_2/*.slnx
+Game_2/*.user
+Game_2/*.userprefs
+Game_2/*.pidb
+Game_2/*.booproj
+
+# Unity crash and memory captures
+Game_2/sysinfo.txt
+Game_2/*.stackdump
+Game_2/[Mm]emoryCaptures/
+Game_2/Recordings/
+
+# Downloaded Asset Store assets
+Game_2/Assets/Bandits - Pixel Art/
+Game_2/Assets/Bandits - Pixel Art.meta
+Game_2/Assets/Cainos/
+Game_2/Assets/Cainos.meta
+Game_2/Assets/Free Pixel Art Forest/
+Game_2/Assets/Free Pixel Art Forest.meta
+Game_2/Assets/Hero Knight - Pixel Art/
+Game_2/Assets/Hero Knight - Pixel Art.meta

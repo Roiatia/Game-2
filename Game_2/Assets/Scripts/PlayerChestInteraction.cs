@@ -20,6 +20,7 @@ public class PlayerChestInteraction : MonoBehaviour
         {
             BuffType buffType = currentChest.GiveRandomBuff();
             playerStats.ApplyBuff(buffType);
+            currentChest.SetUnavailable();
             roundManager.StartRound();
         }
 

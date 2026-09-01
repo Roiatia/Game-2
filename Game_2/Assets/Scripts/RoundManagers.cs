@@ -4,6 +4,8 @@ public class RoundManager : MonoBehaviour
 {
 
     [SerializeField] private float RoundDuration = 25f;
+    [SerializeField] private RoundChest roundChest;
+    [SerializeField] private EnemySpawner enemySpawner;
 
     private int currentRound = 1;
     private float roundTimer;
@@ -24,7 +26,16 @@ public class RoundManager : MonoBehaviour
         isRoundActive = true;
 
         Debug.Log("Round " + currentRound + " started. Duration: " + RoundDuration + " seconds.");
+
+        enemySpawner.SpawnEnemy(currentRound);
     }
+    private void EndRound()
+    {
+        isRoundActive = false;
+        Debug.Log("Round " + currentRound + " ended.");
+        roundChest.SetAvailable();
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,9 +60,5 @@ public class RoundManager : MonoBehaviour
     }
 
 
-    private void EndRound()
-    {
-        isRoundActive = false;
-        Debug.Log("Round " + currentRound + " ended.");
-    }
+ 
 }

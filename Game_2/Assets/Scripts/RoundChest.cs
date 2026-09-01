@@ -8,6 +8,27 @@ public enum BuffType
 
 public class RoundChest : MonoBehaviour
 {
+    private bool isAvialable = true;
+
+
+    public bool IsAvailable()
+    {
+        return isAvialable;
+    }
+
+
+    public void SetAvailable()
+    {
+        isAvialable = true;
+        Debug.Log("chest is available");
+    }
+
+    public void SetUnavailable()
+    {
+        isAvialable = false;
+        Debug.Log("chest is unavailable");
+    }
+
 
 
     public BuffType GiveRandomBuff()

@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerChestInteraction : MonoBehaviour
 {
     private RoundChest currentChest;
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private RoundManager roundManager;
 
     public void OnInteract(InputValue value)
     {
@@ -16,8 +18,12 @@ public class PlayerChestInteraction : MonoBehaviour
 
         if (currentChest != null)
         {
-            currentChest.GiveRandomBuff();
+            BuffType buffType = currentChest.GiveRandomBuff();
+            playerStats.ApplyBuff(buffType);
+            roundManager.StartRound();
         }
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

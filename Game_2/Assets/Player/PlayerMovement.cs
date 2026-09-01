@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovment : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float Speed = 8f;
     [SerializeField] private float jump = 5f;
@@ -64,6 +64,18 @@ public class PlayerMovment : MonoBehaviour
         
             isGrounded = true;
         
+    }
+
+
+    public void IncreaseSpeed()
+    {
+        Speed++;
+    }
+
+    public void IncreaseDefense()
+    {
+        
+        Debug.Log("Defense Buff Applied");
     }
 
     // Update is called once per frame

@@ -192,9 +192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c14cfd354fd8a468eb01a03cb6c248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefab: {fileID: 5277398043679089480, guid: 8f17242f9fc34a9498d020a236c4d596, type: 3}
-  EnemySpawnPointLeft: {fileID: 0}
-  EnemySpawnPointRight: {fileID: 0}
+  regularEnemyPrefab: {fileID: 0}
+  strongEnemyPrefab: {fileID: 0}
+  enemySpawnPointLeft: {fileID: 0}
+  enemySpawnPointRight: {fileID: 0}
 --- !u!1 &45157760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,9 +2049,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c14cfd354fd8a468eb01a03cb6c248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemySpawner
-  enemyPrefab: {fileID: 5277398043679089480, guid: 8f17242f9fc34a9498d020a236c4d596, type: 3}
-  EnemySpawnPointLeft: {fileID: 139068534}
-  EnemySpawnPointRight: {fileID: 893942042}
+  regularEnemyPrefab: {fileID: 5277398043679089480, guid: 8f17242f9fc34a9498d020a236c4d596, type: 3}
+  strongEnemyPrefab: {fileID: 2025718822091374076, guid: 4f3d5a9e176f06d41a6ae57fe35da053, type: 3}
+  enemySpawnPointLeft: {fileID: 139068534}
+  enemySpawnPointRight: {fileID: 893942042}
 --- !u!4 &1685327461
 Transform:
   m_ObjectHideFlags: 0

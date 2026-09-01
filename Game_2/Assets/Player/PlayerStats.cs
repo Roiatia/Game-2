@@ -26,4 +26,14 @@ public class PlayerStats : MonoBehaviour
         }
     }
   
+
+    public void TakeDamage(int damage)
+    {
+        playerHealth -= damage;
+        Debug.Log("Player Health: " + playerHealth);
+        if (playerHealth <= 0)
+        {
+            Debug.Log("GAME OVER !!!!"); 
+        }
+    }
 }

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jump = 5f;
     [SerializeField] private float playerScale = 1.5f;
 
-    //private Animator animator;
+    private Animator animator;
 
 
     private Rigidbody2D rb2d;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.linearVelocity = new Vector2(input.x * Speed, rb2d.linearVelocity.y);
-        //animator.SetFloat("Speed", Mathf.Abs(input.x));
+        animator.SetFloat("Speed", Mathf.Abs(input.x));
     }
 
 
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         input = value.Get<Vector2>();
 
-        //animator.SetFloat("Speed", Mathf.Abs(input.x));
+        animator.SetFloat("Speed", Mathf.Abs(input.x));
 
         if (input.x < 0)
         {

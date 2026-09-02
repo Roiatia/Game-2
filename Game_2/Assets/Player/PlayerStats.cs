@@ -1,8 +1,9 @@
 using UnityEngine;
+using System;
 
 public class PlayerStats : MonoBehaviour
 {
-
+    public event Action PlayerDied;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private int playerHealth = 10;
 
@@ -33,7 +34,8 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player Health: " + playerHealth);
         if (playerHealth <= 0)
         {
-            Debug.Log("GAME OVER !!!!"); 
+            Debug.Log("GAME OVER !!!!");
+            PlayerDied?.Invoke();
         }
     }
 }

@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5734750363138692902}
   - component: {fileID: 2468895695268529114}
   - component: {fileID: 3991694823087815975}
-  m_Layer: 0
+  - component: {fileID: -563744239052964236}
+  m_Layer: 3
   m_Name: BiggerBandit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,3 +183,16 @@ MonoBehaviour:
   moveSpeed: 2
   damage: 4
   enemyScale: 3
+--- !u!114 &-563744239052964236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025718822091374076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07dfb46b4b9d7334b8db66b53e3e2f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  health: 4

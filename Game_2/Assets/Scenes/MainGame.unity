@@ -129,8 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 10419958}
   - component: {fileID: 10419957}
-  - component: {fileID: 10419959}
-  - component: {fileID: 10419960}
   m_Layer: 0
   m_Name: RoundManager
   m_TagString: Untagged
@@ -151,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundManagers
   RoundDuration: 25
-  roundChest: {fileID: 10419959}
-  enemySpawner: {fileID: 10419960}
+  roundChest: {fileID: 233266804}
+  enemySpawner: {fileID: 1685327460}
   playerStats: {fileID: 0}
 --- !u!4 &10419958
 Transform:
@@ -169,34 +167,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &10419959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10419956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4830db17c5c67b48b08d91bfe88ca5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoundChest
---- !u!114 &10419960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10419956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c14cfd354fd8a468eb01a03cb6c248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  regularEnemyPrefab: {fileID: 0}
-  strongEnemyPrefab: {fileID: 0}
-  enemySpawnPointLeft: {fileID: 0}
-  enemySpawnPointRight: {fileID: 0}
 --- !u!1 &45157760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +971,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &589670109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589670110}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &589670110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589670109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.08, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1882746986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589810572
 GameObject:
@@ -2165,6 +2166,7 @@ GameObject:
   - component: {fileID: 1882746991}
   - component: {fileID: 1882746992}
   - component: {fileID: 1882746993}
+  - component: {fileID: 1882746994}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2306,7 +2308,8 @@ Transform:
   m_LocalPosition: {x: -8.56, y: -6.1101, z: 0}
   m_LocalScale: {x: 1.4258673, y: 1.4258673, z: 1.4258673}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 589670110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1882746988
@@ -2420,6 +2423,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1882746994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882746981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e00f143d488f03478a103c7a13e5eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  attackDamage: 2
+  attackRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  attackPoint: {fileID: 589670110}
 --- !u!1 &1963485039
 GameObject:
   m_ObjectHideFlags: 0

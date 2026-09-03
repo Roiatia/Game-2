@@ -1,7 +1,13 @@
 using UnityEngine;
+using System;
 
 public class RoundManager : MonoBehaviour
 {
+
+    public event Action<int> RoundChanged;
+    public event Action<int> TimerChanged;
+
+    public event Action GameWon;
 
     [SerializeField] private float RoundDuration = 25f;
     [SerializeField] private int MaxRounds = 5; 
@@ -9,12 +15,32 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private PlayerStats playerStats;
 
-    private int currentRound = 1;
+    private int currentRound = 0;
     private int enemiesAlive;
     private float roundTimer;
+    private int lastTimerValue;
     private bool isRoundActive;
     private bool isGameOver;
 
+
+
+    public int GetCurrentRound()
+    {
+        return currentRound;
+    }
+
+
+    public int GetCurrentTimer()
+    {
+
+        if(!isRoundActive)
+        {
+            return Mathf.CeilToInt(RoundDuration);
+        }
+
+
+        return Mathf.CeilToInt(roundTimer);
+    }
 
 
 
@@ -35,7 +61,13 @@ public class RoundManager : MonoBehaviour
 
         currentRound++;
         roundTimer = RoundDuration;
+        lastTimerValue = Mathf.CeilToInt(roundTimer);
         isRoundActive = true;
+
+        RoundChanged?.Invoke(currentRound);
+        TimerChanged?.Invoke(lastTimerValue);
+
+
 
         Debug.Log("Round " + currentRound + " started. Duration: " + RoundDuration + " seconds.");
 
@@ -54,6 +86,7 @@ public class RoundManager : MonoBehaviour
         
             Debug.Log("YOU WIN !!");
             isGameOver = true;
+            GameWon?.Invoke();
             return;
 
 
@@ -122,24 +155,32 @@ public class RoundManager : MonoBehaviour
 
 
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        if(!isRoundActive)
+        if (!isRoundActive)
         {
             return;
         }
 
         roundTimer -= Time.deltaTime;
 
-        if(roundTimer <= 0)
+        int timerValue = Mathf.CeilToInt(roundTimer);
+
+        if (timerValue != lastTimerValue)
+        {
+            lastTimerValue = timerValue;
+            TimerChanged?.Invoke(timerValue);
+        }
+
+        if (roundTimer <= 0)
         {
             EndRound();
         }
     }
 
 
- 
-}
+
+    }

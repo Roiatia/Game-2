@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovment : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float Speed = 8f;
     [SerializeField] private float jump = 5f;
+    [SerializeField] private float playerScale = 1.5f;
+
     private Animator animator;
 
 
@@ -38,12 +40,11 @@ public class PlayerMovment : MonoBehaviour
 
         if (input.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
-
+            transform.localScale = new Vector3(-playerScale, playerScale, 1);
         }
         else if (input.x > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(playerScale, playerScale, 1);
         }
     }
 
@@ -63,6 +64,18 @@ public class PlayerMovment : MonoBehaviour
         
             isGrounded = true;
         
+    }
+
+
+    public void IncreaseSpeed()
+    {
+        Speed++;
+    }
+
+    public void IncreaseDefense()
+    {
+        
+        Debug.Log("Defense Buff Applied");
     }
 
     // Update is called once per frame

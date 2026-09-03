@@ -1,0 +1,41 @@
+using UnityEngine;
+using System;
+
+public class PlayerStats : MonoBehaviour
+{
+    public event Action PlayerDied;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private int playerHealth = 20;
+
+    public void ApplyBuff(BuffType buffType)
+    {
+        if(buffType == BuffType.Speed)
+        {
+            playerMovement.IncreaseSpeed();
+            Debug.Log("Speed Buff Applied"); 
+        } 
+        else if(buffType == BuffType.Health)
+        {
+            playerHealth++;
+            Debug.Log("Health Buff Applied" + playerHealth);
+
+        }
+        else if(buffType == BuffType.Defense)
+        {
+            playerMovement.IncreaseDefense();
+            Debug.Log("Defense Buff Applied");
+        }
+    }
+  
+
+    public void TakeDamage(int damage)
+    {
+        playerHealth -= damage;
+        Debug.Log("Player Health: " + playerHealth);
+        if (playerHealth <= 0)
+        {
+            Debug.Log("GAME OVER !!!!");
+            PlayerDied?.Invoke();
+        }
+    }
+}

@@ -7,11 +7,14 @@ TagManager:
   - Floor
   - Chest
   - Package
+  - EnemySpawn
+  - Decoration
+  - Background
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 

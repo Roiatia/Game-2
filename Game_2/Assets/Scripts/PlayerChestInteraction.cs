@@ -16,13 +16,22 @@ public class PlayerChestInteraction : MonoBehaviour
             return;
         }
 
-        if (currentChest != null)
+        if (currentChest == null)
         {
+            return;
+        }
+
+        if (!currentChest.IsAvailable())
+        {
+            Debug.Log("Chest is not available");
+            return;
+        }
+        
             BuffType buffType = currentChest.GiveRandomBuff();
             playerStats.ApplyBuff(buffType);
             currentChest.SetUnavailable();
             roundManager.StartRound();
-        }
+        
 
         
     }

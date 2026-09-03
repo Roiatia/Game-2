@@ -1,39 +1,59 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject regularEnemyPrefab;
     [SerializeField] private GameObject strongEnemyPrefab;
-    [SerializeField] private Transform enemySpawnPointLeft;
-    [SerializeField] private Transform enemySpawnPointRight;
 
-    public void SpawnEnemy(int roundNumber)
+    [SerializeField] private Transform enemySpawnPoint;
+    [SerializeField] private Transform bigEnemySpawnPoint;
+
+
+
+
+
+
+    public int SpawnEnemy(int roundNumber)
     {
         int enemiesToSpawn = roundNumber + 1;
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Transform spawnPoint = GetRandomSpawnPoint();
             GameObject enemyToSpawn = GetRandomEnemyPrefab(roundNumber);
+
+            Transform spawnPoint;
+
+            if (enemyToSpawn == strongEnemyPrefab)
+            {
+                spawnPoint = enemySpawnPoint;
+            }
+            else
+            {
+                spawnPoint = bigEnemySpawnPoint;
+            }
+
+            //Vector3 spawnPosition = spawnPoint.position;
+
+            //if (enemyToSpawn == strongEnemyPrefab)
+            //{
+            //    spawnPosition.x -= i * 1f;
+            //}
+            //else
+            //{
+            //    spawnPosition.x += i * 1f;
+            //}
 
             Instantiate(enemyToSpawn, spawnPoint.position, Quaternion.identity);
         }
 
         Debug.Log("Spawned: " + enemiesToSpawn);
+
+        return enemiesToSpawn;
     }
 
-    private Transform GetRandomSpawnPoint()
-    {
-        int randomSide = Random.Range(0, 2);
 
-        if (randomSide == 0)
-        {
-            return enemySpawnPointLeft;
-        }
-
-        return enemySpawnPointRight;
-    }
-
+    
     private GameObject GetRandomEnemyPrefab(int roundNumber)
     {
         int strongEnemyChance = 20 + roundNumber * 5;
@@ -47,15 +67,5 @@ public class EnemySpawner : MonoBehaviour
         return regularEnemyPrefab;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

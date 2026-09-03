@@ -45,7 +45,6 @@ public class BanditEnemy : MonoBehaviour
             if(playerStats != null)
         {
             playerStats.TakeDamage(damage);
-            Destroy(gameObject);
         }
     }
 }

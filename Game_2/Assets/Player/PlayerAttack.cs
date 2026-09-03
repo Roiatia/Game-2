@@ -9,6 +9,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform attackPoint;
 
+    private Animator animator;
+
 
     public void OnAttack(InputValue value)
     {
@@ -18,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
         }
 
         Debug.Log("Attack pressed");
+        animator.SetTrigger("Attack");
+
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
             attackPoint.position, 
@@ -25,9 +29,15 @@ public class PlayerAttack : MonoBehaviour
             enemyLayer
             );
 
+        Debug.Log("Enemy hit " + hitEnemies.Length);
+
 
         for(int i = 0; i < hitEnemies.Length; i++) 
         {
+
+            Debug.Log("Object hit: " + hitEnemies[i].name);
+
+
             EnemyHealth enemyHealth = hitEnemies[i].GetComponent<EnemyHealth>();
 
             if (enemyHealth != null)
@@ -49,4 +59,9 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
+
+    public void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 }

@@ -5,7 +5,7 @@ public class PlayerStats : MonoBehaviour
 {
     public event Action PlayerDied;
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private int playerHealth = 10;
+    [SerializeField] private int playerHealth = 20;
 
     public void ApplyBuff(BuffType buffType)
     {
